@@ -10,6 +10,7 @@ const App = () => {
       <div>
         <h1>{user.name}</h1>
         <img
+          className="avatar"
           src={user.imageUrl}
           alt={user.name}
           style={{ width: user.imageSize, height: user.imageSize }}
