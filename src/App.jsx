@@ -6,13 +6,11 @@ const products = [
 const App = () => {
   return (
     <>
-      {products.map((item) => {
-        return (
-          <div key={item.id}>
-            PRODUCT NAME: {item.title} PRODUCT ID: {item.id}
-          </div>
-        );
-      })}
+      <ul>
+        {products.map((item) => {
+          return <li key={item.id}>{item.title}</li>;
+        })}
+      </ul>
     </>
   );
 };
