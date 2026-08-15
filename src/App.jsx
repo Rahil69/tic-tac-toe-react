@@ -1,24 +1,17 @@
-const products = [
-  { title: "Cabbage", isFruit: false, id: 1 },
-  { title: "Garlic", isFruit: false, id: 2 },
-  { title: "Apple", isFruit: true, id: 3 },
-];
+import { use, useState } from "react";
+
 const App = () => {
+  const [counter, setCounter] = useState(0);
+  function myFunction() {
+    setCounter((prev) => (prev += 1));
+  }
   return (
-    <>
-      <ul>
-        {products.map((item) => {
-          return (
-            <li
-              key={item.id}
-              style={{ color: item.isFruit ? "magenta" : "blue" }}
-            >
-              {item.title}
-            </li>
-          );
-        })}
-      </ul>
-    </>
+    <div>
+      <button
+        onClick={myFunction}
+      >{`Click me to increment: ${counter}`}</button>
+    </div>
   );
 };
+
 export default App;
