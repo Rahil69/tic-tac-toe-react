@@ -6,7 +6,13 @@ const products = [
 const App = () => {
   return (
     <>
-      <div>{loggedIn && <div>youre logged in niggy</div>}</div>
+      {products.map((item) => {
+        return (
+          <div key={item.id}>
+            PRODUCT NAME: {item.title} PRODUCT ID: {item.id}
+          </div>
+        );
+      })}
     </>
   );
 };
