@@ -1,10 +1,12 @@
-let loggedIn = false;
-let content = <div>youre logged in </div>;
-
+const products = [
+  { title: "Cabbage", id: 1 },
+  { title: "Garlic", id: 2 },
+  { title: "Apple", id: 3 },
+];
 const App = () => {
   return (
     <>
-      <div>{loggedIn && content}</div>
+      <div>{loggedIn && <div>youre logged in niggy</div>}</div>
     </>
   );
 };
