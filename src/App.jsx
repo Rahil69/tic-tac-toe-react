@@ -1,18 +1,21 @@
-function Nigga() {
-  return (
-    <div className="stye">
-      <h1>niggaSex</h1>
-    </div>
-  );
-}
+const user = {
+  name: "Hedy Lamarr",
+  imageUrl: "https://react.dev/images/docs/scientists/yXOvdOSs.jpg",
+  imageSize: 90,
+};
 
-export default function App() {
+const App = () => {
   return (
-    <div>
-      <Nigga />
-      <Nigga />
-      <Nigga />
-      <Nigga />
-    </div>
+    <>
+      <div>
+        <h1>{user.name}</h1>
+        <img
+          src={user.imageUrl}
+          alt={user.name}
+          style={{ width: user.imageSize, height: user.imageSize }}
+        />
+      </div>
+    </>
   );
-}
+};
+export default App;
