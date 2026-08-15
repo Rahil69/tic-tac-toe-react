@@ -1,6 +1,6 @@
 function Nigga() {
   return (
-    <div>
+    <div className="stye">
       <h1>niggaSex</h1>
     </div>
   );
