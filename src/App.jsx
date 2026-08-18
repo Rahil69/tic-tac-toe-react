@@ -1,15 +1,23 @@
 import { use, useState } from "react";
 
-const App = () => {
+const Button = () => {
   const [counter, setCounter] = useState(0);
-  function myFunction() {
+  function handleClick() {
     setCounter((prev) => prev + 1);
   }
   return (
     <div>
-      <button
-        onClick={myFunction}
-      >{`Click me to increment: ${counter}`}</button>
+      <button onClick={handleClick}>{`Press me: ${counter}`}</button>
+    </div>
+  );
+};
+
+const App = () => {
+  return (
+    <div>
+      <Button />
+      <Button />
+      <Button />
     </div>
   );
 };
