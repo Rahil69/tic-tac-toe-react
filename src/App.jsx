@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+// so this function renders the buttons on the board and takes 2 props value and onSquareClick which will be a function
+// and the value will be a stateful array inside of the board Function
 function Square({ value, onSquareClick }) {
   return (
     <button onClick={onSquareClick} className="square">
@@ -9,17 +11,20 @@ function Square({ value, onSquareClick }) {
 }
 
 export default function Board() {
-  const [squares, setSquares] = useState(Array(9).fill(null));
-  const [xIsNext, setxIsNext] = useState(true);
+  const [squares, setSquares] = useState(Array(9).fill(null)); // array of 9 spaces filled with null
+  const [xIsNext, setxIsNext] = useState(true); // to alternate between X and O
   function handleClick(i) {
     const nextSquares = squares.slice();
-    xIsNext ? (nextSquares[i] = "X") : (nextSquares[i] = "O");
+    xIsNext ? (nextSquares[i] = "X") : (nextSquares[i] = "O"); // if XisNext = true nextSquares[i] = X else itll be O
     setSquares(nextSquares);
-    setxIsNext((prev) => !prev);
+    // better to do prev => !prev but this works too
+    setxIsNext(!xIsNext);
   }
   return (
     <>
+      {/* Render the actual board on the main page */}
       <div className="board-row">
+        {/* onSquareClick passes the handleClick function down the Square component arrow function to pass it as a callback */}
         <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
         <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
         <Square value={squares[2]} onSquareClick={() => handleClick(2)} />
