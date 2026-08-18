@@ -15,8 +15,14 @@ export default function Board() {
   const [xIsNext, setxIsNext] = useState(true); // to alternate between X and O
   function handleClick(i) {
     const nextSquares = squares.slice();
-    xIsNext ? (nextSquares[i] = "X") : (nextSquares[i] = "O"); // if XisNext = true nextSquares[i] = X else itll be O
+
+    // if XisNext = true nextSquares[i] = X else itll be O
+    if (squares[i] !== null) {
+      return;
+    }
+    xIsNext ? (nextSquares[i] = "X") : (nextSquares[i] = "O");
     setSquares(nextSquares);
+
     // better to do prev => !prev but this works too
     setxIsNext(!xIsNext);
   }
