@@ -1,23 +1,22 @@
 import { use, useState } from "react";
 
-const Button = () => {
+const App = () => {
   const [counter, setCounter] = useState(0);
   function handleClick() {
     setCounter((prev) => prev + 1);
   }
   return (
     <div>
-      <button onClick={handleClick}>{`Press me: ${counter}`}</button>
+      <Button count={counter} onClick={handleClick} />
+      <Button count={counter} onClick={handleClick} />
     </div>
   );
 };
 
-const App = () => {
+const Button = (props) => {
   return (
     <div>
-      <Button />
-      <Button />
-      <Button />
+      <button onClick={props.onClick}>{`Press me: ${props.count}`}</button>
     </div>
   );
 };
