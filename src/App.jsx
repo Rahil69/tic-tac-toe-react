@@ -10,22 +10,20 @@ function Square({ value, onSquareClick }) {
   );
 }
 
-function Board() {
-  const [squares, setSquares] = useState(Array(9).fill(null)); // array of 9 spaces filled with null
-  const [xIsNext, setxIsNext] = useState(true); // to alternate between X and O
+function Board({ xIsNext, squares, onPlay }) {
+  // const [squares, setSquares] = useState(Array(9).fill(null)); // array of 9 spaces filled with null
+  // const [xIsNext, setxIsNext] = useState(true); // to alternate between X and O
   function handleClick(i) {
-    const nextSquares = squares.slice();
-
-    // if XisNext = true nextSquares[i] = X else itll be O
-    // this if statement stops the function if the position is not null in the squares state.
-    if (squares[i]) {
+    if (calculateWinner(squares) || squares[i]) {
       return;
     }
-    xIsNext ? (nextSquares[i] = "X") : (nextSquares[i] = "O");
-    setSquares(nextSquares);
-
-    // better to do prev => !prev but this works too
-    setxIsNext(!xIsNext);
+    const nextSquares = squares.slice();
+    if (xIsNext) {
+      nextSquares[i] = "X";
+    } else {
+      nextSquares[i] = "O";
+    }
+    onPlay(nextSquares);
   }
   const winner = calculateWinner(squares);
   let status;
@@ -78,11 +76,19 @@ function calculateWinner(squares) {
 }
 
 export default function Game() {
+  const [xIsNext, setXIsNext] = useState(true);
+  const [history, setHistory] = useState([Array(9).fill(null)]);
+  const currentSquares = history[history.length - 1];
+  function handlePlay(nextSquares) {}
   return (
     <>
       <div className="game">
         <div className="game-board">
-          <Board />
+          <Board
+            xIsNext={xIsNext}
+            squares={currentSquares}
+            onPlay={handlePlay}
+          />
         </div>
         <div className="game-info">
           <ol></ol>
