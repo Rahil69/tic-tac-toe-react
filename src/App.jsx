@@ -10,7 +10,7 @@ function Square({ value, onSquareClick }) {
   );
 }
 
-export default function Board() {
+function Board() {
   const [squares, setSquares] = useState(Array(9).fill(null)); // array of 9 spaces filled with null
   const [xIsNext, setxIsNext] = useState(true); // to alternate between X and O
   function handleClick(i) {
@@ -37,6 +37,7 @@ export default function Board() {
   return (
     <>
       {/* Render the actual board on the main page */}
+      <div>{status}</div>
       <div className="board-row">
         {/* onSquareClick passes the handleClick function down the Square component arrow function to pass it as a callback */}
         <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
@@ -74,4 +75,19 @@ function calculateWinner(squares) {
     }
   }
   return null;
+}
+
+export default function Game() {
+  return (
+    <>
+      <div className="game">
+        <div className="game-board">
+          <Board />
+        </div>
+        <div className="game-info">
+          <ol></ol>
+        </div>
+      </div>
+    </>
+  );
 }
